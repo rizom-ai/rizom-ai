@@ -10,3 +10,5 @@ data/
 origin.pem
 origin.key
 origin.csr
+
+.envrc
