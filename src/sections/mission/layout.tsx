@@ -2,13 +2,7 @@ import type { JSX } from "preact";
 import type { MissionContent } from "./schema";
 import { Button, Divider, Section, renderHighlightedText } from "@rizom/ui";
 
-/**
- * Mission's highlight uses wider negative insets so the mid-line
- * extends past the highlighted word on both sides — same move as the
- * original split-field layout, now driven by inline `*...*`.
- */
-const HIGHLIGHT_CLS =
-  "inline-block relative text-accent before:content-[''] before:absolute before:left-[-8%] before:right-[-8%] before:top-1/2 before:h-px before:bg-[var(--color-highlight-underline)] before:opacity-50";
+const HIGHLIGHT_CLS = "italic text-accent font-normal";
 
 export const MissionLayout = ({
   preamble,
@@ -25,7 +19,7 @@ export const MissionLayout = ({
       <p className="font-body text-body-sm md:text-body-lg text-theme-light max-w-[520px] mx-auto mb-8 md:mb-10">
         {preamble}
       </p>
-      <h2 className="font-display font-bold text-display-xl">
+      <h2 className="font-display font-normal text-display-xl">
         {renderHighlightedText(headline, HIGHLIGHT_CLS)}
       </h2>
       <p className="font-body text-body-sm md:text-body-lg text-theme-light max-w-[500px] mx-auto mt-8">

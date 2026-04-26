@@ -2,9 +2,7 @@ import type { JSX } from "preact";
 import type { HeroContent } from "./schema";
 import { Button, Section, renderHighlightedText } from "@rizom/ui";
 
-/** rizom.ai's highlight voice: accent color + thin mid-line decoration. */
-const HIGHLIGHT_CLS =
-  "inline-block relative text-accent before:content-[''] before:absolute before:left-[-4%] before:right-[-4%] before:top-1/2 before:h-px before:bg-[var(--color-highlight-underline)] before:opacity-50";
+const HIGHLIGHT_CLS = "italic text-accent font-normal";
 
 /**
  * Hero section — full-viewport intro with animated rise-in headline,

@@ -14,7 +14,7 @@ export const OwnershipLayout = ({
       <div className="flex flex-col items-start gap-9 md:flex-row md:gap-20">
         <div className="w-full md:w-[45%]">
           <Badge>{badge}</Badge>
-          <h2 className="font-display text-[28px] tracking-[-1px] leading-[1.1] md:text-display-md mt-4 md:mt-6">
+          <h2 className="font-display font-normal text-[28px] tracking-[-1px] leading-[1.1] md:text-display-md mt-4 md:mt-6">
             {renderHighlightedText(headline, HIGHLIGHT_CLS)}
           </h2>
         </div>

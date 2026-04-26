@@ -16,7 +16,7 @@ export const QuickstartLayout = ({
       <div className="flex flex-col md:flex-row gap-8 md:gap-20 items-start">
         <div className="w-full md:w-[420px] shrink-0">
           <Badge>{badge}</Badge>
-          <h2 className="font-display text-[28px] md:text-[36px] tracking-[-0.5px] leading-[1.2] mt-4">
+          <h2 className="font-display font-normal text-[28px] md:text-[36px] tracking-[-0.5px] leading-[1.2] mt-4">
             {headline}
           </h2>
           <p className="text-body-xs md:text-body-sm text-theme-muted mt-4">

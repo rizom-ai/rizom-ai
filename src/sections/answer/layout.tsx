@@ -15,14 +15,14 @@ export const AnswerLayout = ({
   return (
     <Section id="answer" className="reveal text-center py-section">
       <Badge className="mb-7">{badge}</Badge>
-      <h2 className="font-display text-display-md max-w-[900px] mx-auto mb-6 mt-7">
+      <h2 className="font-display font-normal text-display-md max-w-[900px] mx-auto mb-6 mt-7">
         {renderHighlightedText(headline, HIGHLIGHT_CLS)}
       </h2>
       <p className="text-body-md md:text-body-xl text-theme-muted max-w-[640px] mx-auto">
         {subhead}
       </p>
       <Divider className="my-10 md:my-12" />
-      <div className="font-display text-display-sm mb-3.5 md:mb-4">
+      <div className="font-display font-normal text-display-sm mb-3.5 md:mb-4">
         {scalesHeadline}
       </div>
       <ScalesDiagram />
