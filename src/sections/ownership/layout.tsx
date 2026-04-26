@@ -1,6 +1,8 @@
 import type { JSX } from "preact";
 import type { OwnershipContent } from "./schema";
-import { Badge, Section } from "@rizom/ui";
+import { Badge, Section, renderHighlightedText } from "@rizom/ui";
+
+const HIGHLIGHT_CLS = "italic text-accent font-normal";
 
 export const OwnershipLayout = ({
   badge,
@@ -13,7 +15,7 @@ export const OwnershipLayout = ({
         <div className="w-full md:w-[45%]">
           <Badge>{badge}</Badge>
           <h2 className="font-display text-[28px] tracking-[-1px] leading-[1.1] md:text-display-md mt-4 md:mt-6">
-            {headline}
+            {renderHighlightedText(headline, HIGHLIGHT_CLS)}
           </h2>
         </div>
         <div className="flex w-full flex-col gap-8 md:w-[55%] md:pt-[60px]">

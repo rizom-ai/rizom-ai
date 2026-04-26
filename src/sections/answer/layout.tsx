@@ -1,7 +1,9 @@
 import type { JSX } from "preact";
 import type { AnswerContent } from "./schema";
-import { Badge, Divider, Section } from "@rizom/ui";
+import { Badge, Divider, Section, renderHighlightedText } from "@rizom/ui";
 import { ScalesDiagram } from "./scales-diagram";
+
+const HIGHLIGHT_CLS = "italic text-accent font-normal";
 
 export const AnswerLayout = ({
   badge,
@@ -14,7 +16,7 @@ export const AnswerLayout = ({
     <Section id="answer" className="reveal text-center py-section">
       <Badge className="mb-7">{badge}</Badge>
       <h2 className="font-display text-display-md max-w-[900px] mx-auto mb-6 mt-7">
-        {headline}
+        {renderHighlightedText(headline, HIGHLIGHT_CLS)}
       </h2>
       <p className="text-body-md md:text-body-xl text-theme-muted max-w-[640px] mx-auto">
         {subhead}
