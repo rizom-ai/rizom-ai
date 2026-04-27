@@ -235,7 +235,7 @@ const PRODUCT_SVGS: Record<ProductVariant, string> = {
           </g>
         </g>
       </svg>`,
-  relay: `<svg class="product-diagram" viewBox="0 0 511 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="Five teammates as TMS-dimension pentagon radars spread across the canvas; each radar carries a voiceprint signature. Alex's radar is a ghost — his signature persists in the team record. The team has rewired its live connections around him (Iris↔Kai direct).">
+  relay: `<svg class="product-diagram" viewBox="0 0 511 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="Five teammates as TMS-dimension pentagon radars spread across the canvas; each radar carries a voiceprint signature. Alex's radar is a ghost, his signature persists in the team record. The team has rewired its live connections around him (Iris↔Kai direct).">
         <defs>
           <filter id="relay-glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="3.5" result="b"/>

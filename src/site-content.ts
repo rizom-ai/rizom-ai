@@ -11,7 +11,7 @@ export default {
   namespace: "landing-page",
   sections: {
     hero: {
-      description: "Rizom site hero — full-viewport intro with CTA row",
+      description: "Rizom site hero: full-viewport intro with CTA row",
       title: "Hero Section",
       layout: HeroLayout,
       fields: {
@@ -24,7 +24,7 @@ export default {
       },
     },
     problem: {
-      description: "Rizom problem section — 3-up grid of problem statements",
+      description: "Rizom problem section: 3-up grid of problem statements",
       title: "Problem Section",
       layout: ProblemLayout,
       fields: {
@@ -45,7 +45,7 @@ export default {
       },
     },
     answer: {
-      description: "Rizom answer section — centered thesis statement",
+      description: "Rizom answer section: centered thesis statement",
       title: "Answer Section",
       layout: AnswerLayout,
       fields: {
@@ -57,7 +57,7 @@ export default {
       },
     },
     products: {
-      description: "Rizom products section — array of product cards",
+      description: "Rizom products section: array of product cards",
       title: "Products Section",
       layout: ProductsLayout,
       fields: {
@@ -97,7 +97,7 @@ export default {
       },
     },
     ownership: {
-      description: "Rizom ownership section — feature list with icon markers",
+      description: "Rizom ownership section: feature list with icon markers",
       title: "Ownership Section",
       layout: OwnershipLayout,
       fields: {
@@ -121,7 +121,7 @@ export default {
     },
     quickstart: {
       description:
-        "Quickstart section — install/create/run commands and success lines",
+        "Quickstart section: install/create/run commands and success lines",
       title: "Quickstart Section",
       layout: QuickstartLayout,
       fields: {
@@ -140,7 +140,7 @@ export default {
       },
     },
     mission: {
-      description: "Mission section — closing statement with CTA row",
+      description: "Mission section: closing statement with CTA row",
       title: "Mission Section",
       layout: MissionLayout,
       fields: {
@@ -155,7 +155,7 @@ export default {
     },
     ecosystem: {
       description:
-        "Rizom ecosystem section — 3-card grid of sibling rizom sites",
+        "Rizom ecosystem section: 3-card grid of sibling rizom sites",
       title: "Ecosystem Section",
       layout: EcosystemLayout,
       fields: {
