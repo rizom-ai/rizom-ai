@@ -39,10 +39,6 @@ export const HeroLayout = ({
           </Button>
         </div>
       </div>
-      <a className="scroll-cue" href="#problem" aria-label="Scroll to content">
-        <span>Scroll</span>
-        <span className="scroll-cue-line"></span>
-      </a>
     </Section>
   );
 };
