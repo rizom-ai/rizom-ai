@@ -15,6 +15,11 @@ preview_domain = if labels.length >= 3
 else
   "preview.#{brain_domain}"
 end
+www_domain = if labels.length == 2
+  "www.#{brain_domain}"
+else
+  ""
+end
 
 github_env = ENV["GITHUB_ENV"]
 raise "Missing GITHUB_ENV" if github_env.nil? || github_env.empty?
@@ -37,6 +42,7 @@ File.open(github_env, "a") do |file|
   file.puts("BRAIN_MODEL=#{brain_model}")
   file.puts("BRAIN_DOMAIN=#{brain_domain}")
   file.puts("PREVIEW_DOMAIN=#{preview_domain}")
+  file.puts("WWW_DOMAIN=#{www_domain}")
   file.puts("IMAGE_REPOSITORY=ghcr.io/#{registry_username}/#{repository_name}")
   file.puts("REGISTRY_USERNAME=#{registry_username}")
 end
