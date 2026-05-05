@@ -210,6 +210,7 @@ jobs:
           SERVER_IP: ${{ steps.provision.outputs.server_ip }}
         run: |
           BRAIN_DOMAIN="$BRAIN_DOMAIN" bun deploy/scripts/update-dns.ts
+          BRAIN_DOMAIN="www.$BRAIN_DOMAIN" bun deploy/scripts/update-dns.ts
           BRAIN_DOMAIN="$PREVIEW_DOMAIN" bun deploy/scripts/update-dns.ts
 
       - name: Install Kamal
@@ -248,6 +249,7 @@ jobs:
           SERVER_IP: ${{ steps.provision.outputs.server_ip }}
         run: |
           curl -I -k --max-time 20 --resolve "$BRAIN_DOMAIN:443:$SERVER_IP" "https://$BRAIN_DOMAIN"
+          curl -I -k --max-time 20 --resolve "www.$BRAIN_DOMAIN:443:$SERVER_IP" "https://www.$BRAIN_DOMAIN"
           curl -I -k --max-time 20 --resolve "$PREVIEW_DOMAIN:443:$SERVER_IP" "https://$PREVIEW_DOMAIN"
 
       - name: Dump remote proxy diagnostics
