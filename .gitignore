@@ -1,6 +1,7 @@
 .env
 .env.*
 !.env.example
+!.env.schema
 node_modules
 brain.log
 brain-data/

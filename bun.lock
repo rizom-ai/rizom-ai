@@ -5,7 +5,7 @@
     "": {
       "name": "rizom-ai",
       "dependencies": {
-        "@rizom/brain": "^0.2.0-alpha.43",
+        "@rizom/brain": "0.2.0-alpha.49",
         "@rizom/ui": "^0.2.0-alpha.43",
         "preact": "^10.27.2",
       },
@@ -13,6 +13,16 @@
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@bitwarden/sdk-napi": ["@bitwarden/sdk-napi@1.0.0", "", { "optionalDependencies": { "@bitwarden/sdk-napi-darwin-arm64": "1.0.0", "@bitwarden/sdk-napi-darwin-x64": "1.0.0", "@bitwarden/sdk-napi-linux-x64-gnu": "1.0.0", "@bitwarden/sdk-napi-win32-x64-msvc": "1.0.0" } }, "sha512-KrOXiuuQdVBvIM4l7XGrKl8otA9tSEKHjRQr0nF71eyCmIDzOV2kt/gchgLK42exGGuD/JcmmgnXx/j+U6W/+g=="],
+
+    "@bitwarden/sdk-napi-darwin-arm64": ["@bitwarden/sdk-napi-darwin-arm64@1.0.0", "", { "os": "darwin", "cpu": "arm64" }, "sha512-0W6P2VByGFqYIf6bkI7qKWlXPGhG9KFibrN14pvllFIkbNRaz3hktMOLJ/JdWZVmdHrz0R5xmAVldbIWNMjFOA=="],
+
+    "@bitwarden/sdk-napi-darwin-x64": ["@bitwarden/sdk-napi-darwin-x64@1.0.0", "", { "os": "darwin", "cpu": "x64" }, "sha512-Esyg8sktE50U+g12lL/xe68hgc5y78jPPV9maNcKTO9EWdde4RIx9u3xEpbYk5fyHaeMFXdo3TK8A8qLD34X5w=="],
+
+    "@bitwarden/sdk-napi-linux-x64-gnu": ["@bitwarden/sdk-napi-linux-x64-gnu@1.0.0", "", { "os": "linux", "cpu": "x64" }, "sha512-PBGEOq9saYuBBthCq5jAr7eQSyEmQylB+kwsuT0j666VXT124a3YjDGgobPYaR9KN/IRDQ5h2Tysuy1pojx10A=="],
+
+    "@bitwarden/sdk-napi-win32-x64-msvc": ["@bitwarden/sdk-napi-win32-x64-msvc@1.0.0", "", { "os": "win32", "cpu": "x64" }, "sha512-cu92XYjsOWEVECyohGtLxiXcMJMVui+nDJtyNg52iGDeAzWQ7QZh0/bcjkymTCuGoqRD3sT0cCs+5PbW66K2XQ=="],
 
     "@clack/core": ["@clack/core@0.5.0", "", { "dependencies": { "picocolors": "^1.0.0", "sisteransi": "^1.0.5" } }, "sha512-p3y0FIOwaYRUPRcMO7+dlmLh8PSRcrjuTndsiA0WAFbWES0mLZlrjVoBRZ9DzkPFJZG6KGkJmoEAY0ZcVWTkow=="],
 
@@ -114,7 +124,7 @@
 
     "@neon-rs/load": ["@neon-rs/load@0.0.4", "", {}, "sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw=="],
 
-    "@rizom/brain": ["@rizom/brain@0.2.0-alpha.43", "", { "dependencies": { "@clack/prompts": "^0.11.0", "@modelcontextprotocol/sdk": "^1.24.0", "@tailwindcss/postcss": "^4.1.13", "@tailwindcss/typography": "^0.5.19", "postcss": "^8.5.6", "preact": "^10.27.2", "preact-render-to-string": "^6.3.1", "tailwindcss": "^4.1.11" }, "optionalDependencies": { "@libsql/client": "^0.15.7", "@tailwindcss/oxide": "^4.1.4", "better-sqlite3": "^11.8.1", "lightningcss": "^1.29.2", "react-devtools-core": "^6.1.1", "sharp": "^0.34.5" }, "bin": { "brain": "dist/brain.js" } }, "sha512-VLlnXKQPpa3NgJmvYicL36k9m9w+mQnAb3HxmuS1pCphppUgVjxI48sFDNYvowbmgcYE3tTlsuwDBdTlGqRVrA=="],
+    "@rizom/brain": ["@rizom/brain@0.2.0-alpha.49", "", { "dependencies": { "@clack/prompts": "^0.11.0", "@modelcontextprotocol/sdk": "^1.24.0", "@tailwindcss/postcss": "^4.1.13", "@tailwindcss/typography": "^0.5.19", "postcss": "^8.5.6", "preact": "^10.27.2", "preact-render-to-string": "^6.3.1", "tailwindcss": "^4.1.11" }, "optionalDependencies": { "@bitwarden/sdk-napi": "^1.0.0", "@libsql/client": "^0.15.7", "@tailwindcss/oxide": "^4.1.4", "better-sqlite3": "^11.8.1", "lightningcss": "^1.29.2", "react-devtools-core": "^6.1.1", "sharp": "^0.34.5" }, "bin": { "brain": "dist/brain.js" } }, "sha512-rGg5Z/MQ0M3LkK/VG/vHgnapU0+GdN0cuesAJUBRu/3JWUQJ2Nx4if+/1x61WwGCHmmraI1kjECXS/7c1AvCSg=="],
 
     "@rizom/ui": ["@rizom/ui@0.2.0-alpha.43", "", { "dependencies": { "clsx": "^2.1.0", "tailwind-merge": "^2.2.0" }, "peerDependencies": { "preact": "^10.27.2" } }, "sha512-PkwwNvtahz6fCQnCzzSHiuM/3q6tOdrIehfI1kwqVu7Wgx4TQwCyrvSfu6ZtTS7HQtfGlbcwxB+KonIoja5yYg=="],
 

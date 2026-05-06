@@ -28,52 +28,14 @@ jobs:
 
       - name: Validate env via varlock
         env:
-          AI_API_KEY: ${{ secrets.AI_API_KEY }}
-          AI_IMAGE_KEY: ${{ secrets.AI_IMAGE_KEY }}
-          GIT_SYNC_TOKEN: ${{ secrets.GIT_SYNC_TOKEN }}
-          MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-          LINKEDIN_ORGANIZATION_ID: ${{ secrets.LINKEDIN_ORGANIZATION_ID }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ANALYTICS_SITE_TAG: ${{ secrets.CLOUDFLARE_ANALYTICS_SITE_TAG }}
-          HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
-          HCLOUD_SSH_KEY_NAME: ${{ secrets.HCLOUD_SSH_KEY_NAME }}
-          HCLOUD_SERVER_TYPE: ${{ secrets.HCLOUD_SERVER_TYPE }}
-          HCLOUD_LOCATION: ${{ secrets.HCLOUD_LOCATION }}
-          KAMAL_SSH_PRIVATE_KEY: ${{ secrets.KAMAL_SSH_PRIVATE_KEY }}
-          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
-          CERTIFICATE_PEM: ${{ secrets.CERTIFICATE_PEM }}
-          PRIVATE_KEY_PEM: ${{ secrets.PRIVATE_KEY_PEM }}
-        run: npx -y varlock load --path .env.schema --show-all
+          BWS_ACCESS_TOKEN: ${{ secrets.BWS_ACCESS_TOKEN }}
+        run: bunx varlock@1.1.0 load --path .env.schema
 
       - name: Load env via varlock
         env:
-          AI_API_KEY: ${{ secrets.AI_API_KEY }}
-          AI_IMAGE_KEY: ${{ secrets.AI_IMAGE_KEY }}
-          GIT_SYNC_TOKEN: ${{ secrets.GIT_SYNC_TOKEN }}
-          MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-          LINKEDIN_ORGANIZATION_ID: ${{ secrets.LINKEDIN_ORGANIZATION_ID }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ANALYTICS_SITE_TAG: ${{ secrets.CLOUDFLARE_ANALYTICS_SITE_TAG }}
-          HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
-          HCLOUD_SSH_KEY_NAME: ${{ secrets.HCLOUD_SSH_KEY_NAME }}
-          HCLOUD_SERVER_TYPE: ${{ secrets.HCLOUD_SERVER_TYPE }}
-          HCLOUD_LOCATION: ${{ secrets.HCLOUD_LOCATION }}
-          KAMAL_SSH_PRIVATE_KEY: ${{ secrets.KAMAL_SSH_PRIVATE_KEY }}
-          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
-          CERTIFICATE_PEM: ${{ secrets.CERTIFICATE_PEM }}
-          PRIVATE_KEY_PEM: ${{ secrets.PRIVATE_KEY_PEM }}
+          BWS_ACCESS_TOKEN: ${{ secrets.BWS_ACCESS_TOKEN }}
         run: |
-          npx -y varlock load --path .env.schema --format json --compact > /tmp/varlock-env.json
+          bunx varlock@1.1.0 load --path .env.schema --format json --compact > /tmp/varlock-env.json
           node <<'NODE'
           import { appendFileSync, readFileSync } from "node:fs";
           const env = JSON.parse(readFileSync('/tmp/varlock-env.json', 'utf8'));
@@ -86,13 +48,21 @@ jobs:
           const newline = String.fromCharCode(10);
           const carriageReturn = String.fromCharCode(13);
           const lines = Object.entries(env).flatMap(([key, value]) => {
-            if (value === null || value === undefined) {
+            if (key === 'BWS_ACCESS_TOKEN' || value === null || value === undefined) {
               return [];
             }
 
             const text = String(value)
               .split(carriageReturn + newline)
               .join(newline);
+            const escapedMask = text
+              .replace(/%/g, '%25')
+              .replace(/\r/g, '%0D')
+              .replace(/\n/g, '%0A');
+            if (escapedMask.length > 0) {
+              process.stdout.write('::add-mask::' + escapedMask + newline);
+            }
+
             if (text.includes(newline)) {
               return [];
             }
@@ -196,17 +166,10 @@ jobs:
 
       - name: Provision server
         id: provision
-        env:
-          HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
-          HCLOUD_SSH_KEY_NAME: ${{ secrets.HCLOUD_SSH_KEY_NAME }}
-          HCLOUD_SERVER_TYPE: ${{ secrets.HCLOUD_SERVER_TYPE }}
-          HCLOUD_LOCATION: ${{ secrets.HCLOUD_LOCATION }}
         run: bun deploy/scripts/provision-server.ts
 
       - name: Update Cloudflare DNS
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
           SERVER_IP: ${{ steps.provision.outputs.server_ip }}
         run: |
           BRAIN_DOMAIN="$BRAIN_DOMAIN" bun deploy/scripts/update-dns.ts
