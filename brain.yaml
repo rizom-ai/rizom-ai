@@ -1,5 +1,7 @@
 brain: ranger
 preset: default
+add:
+  - atproto-registry
 
 # Instance settings
 logLevel: info
