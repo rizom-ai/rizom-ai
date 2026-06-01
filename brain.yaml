@@ -10,5 +10,6 @@ plugins:
     git:
       repo: rizom-ai/rizom-ai-content
       authToken: ${GIT_SYNC_TOKEN}
+  atproto-registry: {}
   mcp:
     authToken: ${MCP_AUTH_TOKEN}
