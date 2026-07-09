@@ -58,9 +58,11 @@ On top of that:
 ## Content-merge collision policy (executed in Phase 3, 2026-07-09)
 
 The three content repos are `rizom-ai-content`, `rizom-work-content`, and
-`rizom-foundation-content` (cloned as each app repo's `brain-data/`). Both
-sources merged into `rizom-ai-content` with full history (`-s ours` merge +
-selective checkout). Resolutions:
+`rizom-foundation-content` (cloned as each app repo's `brain-data/`). All
+three merged with full history (`-s ours` merges + selective checkout) into
+the **new `rizom-ai/rizom-content` repo** — the consolidated brain starts on
+a fresh writer-of-record while the live brain keeps syncing the untouched
+`rizom-ai-content` until cutover. Resolutions:
 
 - **Identity entities resolve to rizom-ai** (`anchor-profile`,
   `brain-character`, `site-info`, `HOME`, `product/*`) — the losing copies
@@ -77,7 +79,6 @@ selective checkout). Resolutions:
   `declaration`, `tutorial`), *The Future of Work is Play* (becomes the first
   entry of the foundation-essays series on `/writing`), `RizomBrandBook`,
   `RizomBusinessBrief`.
-- **`site-content/*` retirement is deferred to cutover** — the content repo
-  feeds the live rizom.ai brain on push, so the merge stays additive; the
-  old site-content entities are deleted in the same step that switches the
-  deployment to the consolidated site package.
+- **`site-content/*` retired in `rizom-content` immediately** — the new repo
+  has no live consumer, so nothing waits for cutover. The old repos stay
+  untouched and get archived when the deployment switches.
