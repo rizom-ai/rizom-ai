@@ -55,18 +55,29 @@ On top of that:
   list on all three live sites is empty — there is no cadence to carry, and
   automated generation schedules shouldn't outrun an actual practice.
 
-## Content-merge collision policy (feeds Phase 3)
+## Content-merge collision policy (executed in Phase 3, 2026-07-09)
 
-Every id that exists in more than one repo is an identity entity
-(`anchor-profile`, `brain-character`, `site-info`, `HOME`, `prompt/*`,
-`product/our-product`, `products-overview`):
+The three content repos are `rizom-ai-content`, `rizom-work-content`, and
+`rizom-foundation-content` (cloned as each app repo's `brain-data/`). Both
+sources merged into `rizom-ai-content` with full history (`-s ours` merge +
+selective checkout). Resolutions:
 
-- **rizom-ai's copy wins** — it is the surviving identity. Diff the losing
-  copies during the merge in case work/foundation carry copy worth folding in,
-  but the id resolves to rizom-ai's version.
-- **foundation-unique content imports as-is**: the decks (`2025`, `cococo`,
+- **Identity entities resolve to rizom-ai** (`anchor-profile`,
+  `brain-character`, `site-info`, `HOME`, `product/*`) — the losing copies
+  were placeholders or trivially-divergent punctuation.
+- **work-unique content imported**: six workshop skills, eleven extracted
+  topics (not re-derivable — work's conversations don't migrate, only
+  foundation's runtime state does), its three assessment/memory prompts, and
+  its **newer `link-extraction` prompt with accuracy rules, which beat
+  rizom-ai's older copy** (the one exception to identity-wins).
+- **work-vs-foundation collisions all went to work** (newer by a month):
+  `swot/swot.md` (foundation's was an empty derived stub) and the three
+  shared pipeline prompts.
+- **foundation-unique content imported**: the decks (`2025`, `cococo`,
   `declaration`, `tutorial`), *The Future of Work is Play* (becomes the first
   entry of the foundation-essays series on `/writing`), `RizomBrandBook`,
-  `RizomBusinessBrief`, `swot`, and the topics prompts.
-- **work has no unique content** outside `site-content/*` (retired above) —
-  everything else duplicates rizom-ai ids.
+  `RizomBusinessBrief`.
+- **`site-content/*` retirement is deferred to cutover** — the content repo
+  feeds the live rizom.ai brain on push, so the merge stays additive; the
+  old site-content entities are deleted in the same step that switches the
+  deployment to the consolidated site package.
