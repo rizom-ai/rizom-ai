@@ -12,7 +12,7 @@ Settles the information-architecture decisions for folding `rizom.work` and
 | `/work` | Practice room (diagnostic hero, workshop, personas, proof, roster) | `@brains/site-rizom-ai` sections (built) |
 | `/foundation` | Journal room (masthead, research index, chapters, support, follow) | `@brains/site-rizom-ai` sections (built) |
 | `/writing` | The one index for everything published — posts, foundation essays (as a series), decks | blog + series + decks plugins |
-| `/events` | Gatherings | events content (foundation's events section graduates to a route when entries exist) |
+| `/events` | Gatherings | **deferred** — needs an `event` entity (own plan, post-migration); until then the `/foundation` teaser holds gatherings and `Events` links point there |
 | `/network` | Agent directory | agent-discovery plugin (today's `rizom.foundation/agents`) |
 | `/docs` ↗ | External | docs.rizom.ai |
 | `/chat` | Public chat with the brain | web-chat interface |
